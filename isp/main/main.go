@@ -1,12 +1,6 @@
-package isp
+package main
 
 import "fmt"
-
-type (
-	PrinterMachine struct{}
-	ScannerMachine struct{}
-	MultifunctionalMachine struct{}
-)
 
 func (m PrinterMachine) Print(d Document) {
 	fmt.Println("Printing...", d.Content)
@@ -27,7 +21,7 @@ func (m MultifunctionalMachine) Scan(d Document) {
 func main() {
 	var p Printer
 	var s Scanner
-	var mfd MultifunctionalMachine
+	var mfd MultifunctionDevice
 
 	d := Document{"My document content"}
 	p = PrinterMachine{}

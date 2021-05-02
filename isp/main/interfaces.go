@@ -1,4 +1,4 @@
-package isp
+package main
 
 type Printer interface {
 	Print(d Document)
