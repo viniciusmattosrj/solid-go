@@ -1,21 +1,10 @@
-FROM go:1.3
+FROM golang:1.16 as builder
 
-LABEL maintainer="Vinicius Mattos vinimattos.rj@gmail.com"
-
-RUN apk update && apk add make
-
-WORKDIR /solid-go
-
+WORKDIR /go/src/
 COPY . .
+RUN GOOS=linux CGO_ENABLE=0 go build -o server main.go
 
-RUN make build
-
-FROM alpine:3.12
-
-COPY --from=builder /solid-go/bin/linux_amd64/solid-go/solid-go /usr/bin/solid-go
-
-ENV PORT=5000
-
-ENTRYPOINT [ "/usr/bin/solid-go" ]
-
-EXPOSE 5000
+FROM scratch
+WORKDIR /go/
+COPY --from=builder /go/src/server /go
+CMD ["/go/server"]
