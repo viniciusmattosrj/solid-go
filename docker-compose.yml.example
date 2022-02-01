@@ -5,12 +5,3 @@ services:
     image: viniciusmattosrj/go:1.6
     container_name: go
     restart: always
-    #volumes:
-    # - ./:/var/www/html
-    # - ~/.ssh:/root/.ssh
-    networks:
-      projetos_servicos
-
-networks:
-  projetos_servicos:
-   external: true
