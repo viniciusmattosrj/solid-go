@@ -2,7 +2,7 @@ version: '3'
 
 services:
   go:
-    image: viniciusmattosrj/go:1.3
+    image: viniciusmattosrj/go:1.6
     container_name: go
     restart: always
     #volumes:
