@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  app:
+    build: go/
+    volumes:
+      - ./go:/go/src
+    restart: always
